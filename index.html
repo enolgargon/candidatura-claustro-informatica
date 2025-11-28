@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Candidatura Claustro - Dept. Informática UniOvi</title>
+    <title>Candidatura Claustro - Ayudantes e Investigadores e Formación de Informática</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -167,15 +167,10 @@
               >
             </div>
 
-            <div class="chart-container">
-              <canvas id="skillsChart"></canvas>
-            </div>
-
             <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
-              <h4 id="detail-title" class="font-bold text-gray-800 text-sm mb-1">Visión Conjunta</h4>
+              <h4 id="detail-title" class="font-bold text-gray-800 text-sm mb-1">Descripción del caldidato</h4>
               <p id="detail-desc" class="text-xs text-gray-600 leading-relaxed">
-                El gráfico muestra la distribución de fortalezas de la candidatura. Pasa el cursor sobre un candidato (o
-                tócalo) para ver su aportación individual.
+                
               </p>
             </div>
           </div>
@@ -190,9 +185,6 @@
         <p class="text-blue-200 mb-6">
           "Por una Universidad de Oviedo más innovadora, eficiente y orientada al futuro."
         </p>
-        <div class="text-xs text-blue-300 border-t border-blue-800 pt-4">
-          Departamento de Informática • Universidad de Oviedo
-        </div>
       </div>
     </footer>
 
@@ -295,67 +287,67 @@
       const chartSubject = document.getElementById("chart-subject");
 
       // --- CHART INITIALIZATION ---
-      const ctx = document.getElementById("skillsChart").getContext("2d");
-      const labels = [
-        "Innovación Docente",
-        "Investigación",
-        "Gestión y Eficiencia",
-        "Talento Joven",
-        "Tecnología e IA",
-      ];
+      // const ctx = document.getElementById("skillsChart").getContext("2d");
+      // const labels = [
+      //   "Innovación Docente",
+      //   "Investigación",
+      //   "Gestión y Eficiencia",
+      //   "Talento Joven",
+      //   "Tecnología e IA",
+      // ];
 
-      // Setup Chart
-      let myRadarChart = new Chart(ctx, {
-        type: "radar",
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: "Promedio Candidatura",
-              data: teamAverage,
-              fill: true,
-              backgroundColor: "rgba(0, 74, 153, 0.2)",
-              borderColor: "#004a99",
-              pointBackgroundColor: "#004a99",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "#004a99",
-            },
-            {
-              label: "Seleccionado",
-              data: [0, 0, 0, 0, 0], // Hidden initially
-              fill: true,
-              backgroundColor: "rgba(239, 68, 68, 0.0)", // Transparent initially
-              borderColor: "rgba(239, 68, 68, 0.0)",
-              pointBackgroundColor: "rgba(239, 68, 68, 0.0)",
-              borderDash: [5, 5],
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          elements: {
-            line: { borderWidth: 3 },
-          },
-          scales: {
-            r: {
-              angleLines: { display: true, color: "#e2e8f0" },
-              grid: { color: "#e2e8f0" },
-              pointLabels: {
-                font: { size: 10, family: "'Inter', sans-serif" },
-                color: "#64748b",
-              },
-              suggestedMin: 0,
-              suggestedMax: 10,
-              ticks: { display: false }, // Hide numbers on axis for cleaner look
-            },
-          },
-          plugins: {
-            legend: { display: true, position: "bottom" },
-          },
-        },
-      });
+      // // Setup Chart
+      // let myRadarChart = new Chart(ctx, {
+      //   type: "radar",
+      //   data: {
+      //     labels: labels,
+      //     datasets: [
+      //       {
+      //         label: "Promedio Candidatura",
+      //         data: teamAverage,
+      //         fill: true,
+      //         backgroundColor: "rgba(0, 74, 153, 0.2)",
+      //         borderColor: "#004a99",
+      //         pointBackgroundColor: "#004a99",
+      //         pointBorderColor: "#fff",
+      //         pointHoverBackgroundColor: "#fff",
+      //         pointHoverBorderColor: "#004a99",
+      //       },
+      //       {
+      //         label: "Seleccionado",
+      //         data: [0, 0, 0, 0, 0], // Hidden initially
+      //         fill: true,
+      //         backgroundColor: "rgba(239, 68, 68, 0.0)", // Transparent initially
+      //         borderColor: "rgba(239, 68, 68, 0.0)",
+      //         pointBackgroundColor: "rgba(239, 68, 68, 0.0)",
+      //         borderDash: [5, 5],
+      //       },
+      //     ],
+      //   },
+      //   options: {
+      //     responsive: true,
+      //     maintainAspectRatio: false,
+      //     elements: {
+      //       line: { borderWidth: 3 },
+      //     },
+      //     scales: {
+      //       r: {
+      //         angleLines: { display: true, color: "#e2e8f0" },
+      //         grid: { color: "#e2e8f0" },
+      //         pointLabels: {
+      //           font: { size: 10, family: "'Inter', sans-serif" },
+      //           color: "#64748b",
+      //         },
+      //         suggestedMin: 0,
+      //         suggestedMax: 10,
+      //         ticks: { display: false }, // Hide numbers on axis for cleaner look
+      //       },
+      //     },
+      //     plugins: {
+      //       legend: { display: true, position: "bottom" },
+      //     },
+      //   },
+      // });
 
       // --- RENDER FUNCTIONS ---
 
@@ -417,12 +409,12 @@
 
       function updateVisualization(member) {
         // Update Chart
-        myRadarChart.data.datasets[1].data = member.scores;
-        myRadarChart.data.datasets[1].label = member.name.split(" ")[0]; // First name
-        myRadarChart.data.datasets[1].backgroundColor = "rgba(239, 68, 68, 0.2)"; // Red tint
-        myRadarChart.data.datasets[1].borderColor = "#ef4444"; // Red
-        myRadarChart.data.datasets[1].pointBackgroundColor = "#ef4444";
-        myRadarChart.update();
+        // myRadarChart.data.datasets[1].data = member.scores;
+        // myRadarChart.data.datasets[1].label = member.name.split(" ")[0]; // First name
+        // myRadarChart.data.datasets[1].backgroundColor = "rgba(239, 68, 68, 0.2)"; // Red tint
+        // myRadarChart.data.datasets[1].borderColor = "#ef4444"; // Red
+        // myRadarChart.data.datasets[1].pointBackgroundColor = "#ef4444";
+        // myRadarChart.update();
 
         // Update Text
         chartSubject.textContent = member.name;
@@ -431,15 +423,15 @@
       }
 
       function resetVisualization() {
-        myRadarChart.data.datasets[1].data = [0, 0, 0, 0, 0];
-        myRadarChart.data.datasets[1].borderColor = "rgba(0,0,0,0)";
-        myRadarChart.data.datasets[1].backgroundColor = "rgba(0,0,0,0)";
-        myRadarChart.update();
+        // myRadarChart.data.datasets[1].data = [0, 0, 0, 0, 0];
+        // myRadarChart.data.datasets[1].borderColor = "rgba(0,0,0,0)";
+        // myRadarChart.data.datasets[1].backgroundColor = "rgba(0,0,0,0)";
+        // myRadarChart.update();
 
-        chartSubject.textContent = "Promedio del Equipo";
-        detailTitle.textContent = "Visión Conjunta";
-        detailDesc.textContent =
-          "El gráfico muestra la distribución de fortalezas de la candidatura. Pasa el cursor sobre un candidato para ver su aportación individual.";
+        // chartSubject.textContent = "Promedio del Equipo";
+        // detailTitle.textContent = "Visión Conjunta";
+        // detailDesc.textContent =
+        //   "El gráfico muestra la distribución de fortalezas de la candidatura. Pasa el cursor sobre un candidato para ver su aportación individual.";
       }
 
       // --- INITIAL RENDER ---
